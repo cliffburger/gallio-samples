@@ -1,12 +1,7 @@
-Cliff's code samples
-=====================
+Gallio samples
+==============
 
-Sometimes posting useful snippets that I've carried around on various computers.
+These samples are based on the samples distributed with (Gallio)[http://www.gallio.org/Downloads.aspx]. 
 
-None this code is beautiful. 
-I take them far enough to learn or demonstate a concept or technology. 
-However, some are really not useful.
-Currently useful Samples
-
-- BasicAutofac
-- DesignByContract
+You may find useful:
+* log4net integration -- log4net output in you Gallio logs.
