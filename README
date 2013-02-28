@@ -1,7 +1,7 @@
 Gallio samples
 ==============
 
-These samples are based on the samples distributed with Gallio -- (http://www.gallio.org/Downloads.aspx)
+These samples are based on the samples distributed with Gallio -- [http://www.gallio.org/Downloads.aspx]
 
 You may find useful:
 * log4net integration -- log4net output in you Gallio logs.
