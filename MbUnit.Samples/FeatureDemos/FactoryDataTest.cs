@@ -27,9 +27,9 @@ namespace MbUnit.Samples.FeatureDemos
 
         public IEnumerable<DtoWithDelegate> GetDelegates()
         {
-            yield return new DtoWithDelegate { Name = "Rad", DoSomeThing = (s => TestLog.Write("{0} is rad")) };
-            yield return new DtoWithDelegate { Name = "Stupid", DoSomeThing = (s => TestLog.Write("{0} is stupid")) };
-            yield return new DtoWithDelegate { Name = "beautiful", DoSomeThing = (s => TestLog.Write("{0} is beautiful")) };
+            yield return new DtoWithDelegate { Name = "Rad", DoSomeThing = (s => TestLog.Write("{0} is rad", s))};
+            yield return new DtoWithDelegate { Name = "Stupid", DoSomeThing = (s => TestLog.Write("{0} is stupid",s)) };
+            yield return new DtoWithDelegate { Name = "beautiful", DoSomeThing = (s => TestLog.Write("{0} is beautiful",s)) };
 
         }
         public IEnumerable<Color> EnumerableData()
