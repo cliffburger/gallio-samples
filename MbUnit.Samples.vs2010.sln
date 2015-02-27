@@ -5,6 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cliff.Mbunit", "Cliff.Mbuni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MbUnit.Samples.vs2010", "MbUnit.Samples\MbUnit.Samples.vs2010.csproj", "{0B940D84-3EA2-4DE8-8664-E3AB74A5426E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1E485B64-24D1-4450-882A-64E5785A3920}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = MbUnit.Samples.vs2010.vsmdi
