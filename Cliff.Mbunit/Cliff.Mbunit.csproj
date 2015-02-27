@@ -39,15 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gallio">
-      <HintPath>..\packages\mbunit.3.3.454.0\lib\net40\Gallio.dll</HintPath>
-    </Reference>
-    <Reference Include="Gallio.XmlSerializers, Version=3.4.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
+    <Reference Include="Gallio, Version=3.3.0.0, Culture=neutral, PublicKeyToken=eb9cfa67ee6ab36e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Gallio.XmlSerializers.dll</HintPath>
+      <HintPath>..\packages\GallioBundle.3.4.14.0\bin\Gallio.dll</HintPath>
     </Reference>
-    <Reference Include="Gallio40">
-      <HintPath>..\packages\mbunit.3.3.454.0\lib\net40\Gallio40.dll</HintPath>
+    <Reference Include="Gallio.XmlSerializers">
+      <HintPath>..\packages\GallioBundle.3.4.14.0\bin\Gallio.XmlSerializers.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
