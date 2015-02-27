@@ -86,7 +86,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicTest.cs" />
+    <Compile Include="ThisFixtureShouldRetry.cs" />
     <Compile Include="ContractVerifiers\Accessor\SampleAccessor.cs" />
     <Compile Include="ContractVerifiers\Accessor\SampleAccessor.Test.cs" />
     <Compile Include="ContractVerifiers\Collection\SampleCollection.cs" />
@@ -118,6 +118,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Retry\TheseTestsShouldRetry.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="data.csv">
@@ -126,7 +127,6 @@
     <None Include="App.config" />
     <None Include="log4net.config" />
     <None Include="packages.config" />
-    <Content Include="commands.txt" />
     <None Include="Resources\MbUnitLogo.png" />
   </ItemGroup>
   <ItemGroup>
