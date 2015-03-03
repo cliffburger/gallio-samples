@@ -39,11 +39,11 @@ task :show_gallio do
   puts test_file
 end
 
-desc "Runs tests"
+desc "Runs retry tests"
 test_runner :mbunit_samples do |tests|
   tests.exe = mbunit_exe
   tests.files = test_file
-  tests.add_parameter '/filter:Type:BasicTest'
+  tests.add_parameter '/filter:Type:TheseTestsShouldRetry'
 end
 
 task :default => [:show_gallio]
