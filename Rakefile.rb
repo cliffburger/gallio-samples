@@ -11,6 +11,11 @@ def root_path
   Pathname.new(File.expand_path(File.dirname(__FILE__)))
 end
 
+def test_file
+  unix_path =File.join(root_path, 'MbUnit.Samples', 'bin', 'MbUnit.Samples.dll')
+  unix_path.gsub('/', '\\' )
+end
+
 def find_in_packages (file)
   package_path = File.join(root_path, 'packages')
   Find.find(package_path) do |f|
@@ -26,17 +31,18 @@ def mbunit_commandline(assembly, mbunit_filter=nil)
   parameters
 end
 
-task :init_testrun do
-  puts 'We really should build'
-end
 
+desc "Shows the location of gallio.echo"
 task :show_gallio do
   puts mbunit_exe
+
+  puts test_file
 end
 
+desc "Runs tests"
 test_runner :mbunit_samples do |tests|
   tests.exe = mbunit_exe
-  tests.files = 'C:\\cliff.src\\gallio-samples\\MbUnit.Samples\\bin\\MbUnit.Samples.dll'
+  tests.files = test_file
   tests.add_parameter '/filter:Type:BasicTest'
 end
 
