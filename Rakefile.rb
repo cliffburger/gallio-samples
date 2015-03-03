@@ -44,6 +44,20 @@ test_runner :mbunit_samples do |tests|
   tests.exe = mbunit_exe
   tests.files = test_file
   tests.add_parameter '/filter:Type:TheseTestsShouldRetry'
+  tests.add_parameter '/rt:Html'
+  tests.add_parameter '/show-reports'
+  
+end
+
+desc "Example of category filtering"
+test_runner :filter_samples do |tests|
+  tests.exe = mbunit_exe
+  tests.files = test_file
+  # Order takes precedence
+  tests.add_parameter '/filter:exclude Category:B,C include Category:Filtering'
+  #tests.add_parameter '/filter:include Category:Filtering exclude Category:B,C'
+  tests.add_parameter '/rt:Html'
+  tests.add_parameter '/show-reports'
 end
 
 task :default => [:show_gallio]

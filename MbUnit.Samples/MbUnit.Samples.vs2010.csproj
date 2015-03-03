@@ -86,7 +86,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ThisFixtureShouldRetry.cs" />
+    <Compile Include="Filtering\FilterTest.cs" />
     <Compile Include="ContractVerifiers\Accessor\SampleAccessor.cs" />
     <Compile Include="ContractVerifiers\Accessor\SampleAccessor.Test.cs" />
     <Compile Include="ContractVerifiers\Collection\SampleCollection.cs" />
