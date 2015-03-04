@@ -23,19 +23,18 @@ def find_in_packages (file)
   end
 end
 
-def mbunit_commandline(assembly, mbunit_filter=nil)
-  parameters = [assembly]
-  parameters << "/rt:Html"
-  parameters << "/rd:\"#{test_results}\""
-  parameters << "/f:\"#{mbunit_filter}\"" if not_nil_or_empty(mbunit_filter)
-  parameters
+def mbunit_parameters(test_task, mbunit_filter)
+  test_task.exe = mbunit_exe
+  test_task.files = test_file
+  test_task.add_parameter "/rt:Html"
+  test_task.add_parameter "/show-reports"
+  #test_task.add_parameter "/rd:\"#{test_results}\""
+  test_task.add_parameter"/f:#{mbunit_filter}"
 end
-
 
 desc "Shows the location of gallio.echo"
 task :show_gallio do
   puts mbunit_exe
-
   puts test_file
 end
 
@@ -43,21 +42,22 @@ desc "Runs retry tests"
 test_runner :mbunit_samples do |tests|
   tests.exe = mbunit_exe
   tests.files = test_file
-  tests.add_parameter '/filter:Type:TheseTestsShouldRetry'
-  tests.add_parameter '/rt:Html'
-  tests.add_parameter '/show-reports'
-  
+  mbunit_parameters tests, 'Type:TheseTestsShouldRetry'
 end
 
-desc "Example of category filtering"
-test_runner :filter_samples do |tests|
-  tests.exe = mbunit_exe
-  tests.files = test_file
-  # Order takes precedence
-  tests.add_parameter '/filter:exclude Category:B,C include Category:Filtering'
-  #tests.add_parameter '/filter:include Category:Filtering exclude Category:B,C'
-  tests.add_parameter '/rt:Html'
-  tests.add_parameter '/show-reports'
+desc "Example of category filtering -- exclude BC"
+test_runner :filter_a1 do |tests|
+  mbunit_parameters tests,'exclude Category:B,C include Category:Filtering'
+end
+
+desc "Example of category filtering -- attempt to exclude BC"
+test_runner :filter_a2 do |tests|
+  mbunit_parameters tests,'include Category:Filtering exclude Category:B,C '
+end
+
+desc "Example of category filtering -- sequence without and"
+test_runner :filter_combine do |tests|
+  mbunit_parameters tests, 'exclude Category:B include Category:Filtering include Type:NoFilterCategory'
 end
 
 task :default => [:show_gallio]
