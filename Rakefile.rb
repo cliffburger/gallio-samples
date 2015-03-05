@@ -32,6 +32,11 @@ def mbunit_parameters(test_task, mbunit_filter)
   test_task.add_parameter"/f:#{mbunit_filter}"
 end
 
+build :build do |b|
+  b.sln = 'MbUnit.Samples.vs2010.sln'
+  puts p
+end
+
 desc "Shows the location of gallio.echo"
 task :show_gallio do
   puts mbunit_exe
@@ -39,24 +44,25 @@ task :show_gallio do
 end
 
 desc "Runs retry tests"
-test_runner :mbunit_samples do |tests|
-  tests.exe = mbunit_exe
-  tests.files = test_file
+test_runner :retry => [:build] do |tests|
   mbunit_parameters tests, 'Type:TheseTestsShouldRetry'
 end
 
 desc "Example of category filtering -- exclude BC"
-test_runner :filter_a1 do |tests|
+test_runner :f_a => [:build] do |tests|
   mbunit_parameters tests,'exclude Category:B,C include Category:Filtering'
 end
 
-desc "Example of category filtering -- attempt to exclude BC"
-test_runner :filter_a2 do |tests|
+desc "Example of category filtering -- attempt and fail to exclude B,C that also have 'Filtering'"
+test_runner :filter_order_wrong => [:build] do |tests|
   mbunit_parameters tests,'include Category:Filtering exclude Category:B,C '
 end
 
-desc "Example of category filtering -- sequence without and"
-test_runner :filter_combine do |tests|
+desc "Category filtering -- tests with category B (excluded) and category 'Filtering' are excluded"
+test_runner :filter_order => [:build] do |tests|
+  # first clause: tests with category B and Filtering are excluded,
+  # second: include tests of category Filtering, other than those excluded
+  # more specific types are always matched
   mbunit_parameters tests, 'exclude Category:B include Category:Filtering include Type:NoFilterCategory'
 end
 
